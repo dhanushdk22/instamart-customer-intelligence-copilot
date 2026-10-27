@@ -1,0 +1,357 @@
+{
+  "raw_audit": {
+    "customers": {
+      "shape": [
+        1200,
+        5
+      ],
+      "dtypes": {
+        "customer_id": "object",
+        "city": "object",
+        "signup_date": "object",
+        "age": "object",
+        "gender": "object"
+      },
+      "columns": [
+        {
+          "column": "customer_id",
+          "dtype": "object",
+          "missing_count": 0,
+          "missing_pct": 0.0
+        },
+        {
+          "column": "city",
+          "dtype": "object",
+          "missing_count": 0,
+          "missing_pct": 0.0
+        },
+        {
+          "column": "signup_date",
+          "dtype": "object",
+          "missing_count": 0,
+          "missing_pct": 0.0
+        },
+        {
+          "column": "age",
+          "dtype": "object",
+          "missing_count": 61,
+          "missing_pct": 5.08
+        },
+        {
+          "column": "gender",
+          "dtype": "object",
+          "missing_count": 30,
+          "missing_pct": 2.5
+        }
+      ]
+    },
+    "products": {
+      "shape": [
+        40,
+        4
+      ],
+      "dtypes": {
+        "product_id": "object",
+        "product_name": "object",
+        "category": "object",
+        "price_inr": "int64"
+      },
+      "columns": [
+        {
+          "column": "product_id",
+          "dtype": "object",
+          "missing_count": 0,
+          "missing_pct": 0.0
+        },
+        {
+          "column": "product_name",
+          "dtype": "object",
+          "missing_count": 0,
+          "missing_pct": 0.0
+        },
+        {
+          "column": "category",
+          "dtype": "object",
+          "missing_count": 0,
+          "missing_pct": 0.0
+        },
+        {
+          "column": "price_inr",
+          "dtype": "int64",
+          "missing_count": 0,
+          "missing_pct": 0.0
+        }
+      ]
+    },
+    "orders": {
+      "shape": [
+        13084,
+        9
+      ],
+      "dtypes": {
+        "order_id": "object",
+        "customer_id": "object",
+        "product_id": "object",
+        "quantity": "int64",
+        "order_ts": "object",
+        "status": "object",
+        "discount_pct": "int64",
+        "order_amount": "object",
+        "delivery_minutes": "float64"
+      },
+      "columns": [
+        {
+          "column": "order_id",
+          "dtype": "object",
+          "missing_count": 0,
+          "missing_pct": 0.0
+        },
+        {
+          "column": "customer_id",
+          "dtype": "object",
+          "missing_count": 0,
+          "missing_pct": 0.0
+        },
+        {
+          "column": "product_id",
+          "dtype": "object",
+          "missing_count": 0,
+          "missing_pct": 0.0
+        },
+        {
+          "column": "quantity",
+          "dtype": "int64",
+          "missing_count": 0,
+          "missing_pct": 0.0
+        },
+        {
+          "column": "order_ts",
+          "dtype": "object",
+          "missing_count": 0,
+          "missing_pct": 0.0
+        },
+        {
+          "column": "status",
+          "dtype": "object",
+          "missing_count": 0,
+          "missing_pct": 0.0
+        },
+        {
+          "column": "discount_pct",
+          "dtype": "int64",
+          "missing_count": 0,
+          "missing_pct": 0.0
+        },
+        {
+          "column": "order_amount",
+          "dtype": "object",
+          "missing_count": 53,
+          "missing_pct": 0.41
+        },
+        {
+          "column": "delivery_minutes",
+          "dtype": "float64",
+          "missing_count": 2541,
+          "missing_pct": 19.42
+        }
+      ]
+    },
+    "orders_exact_duplicates": 119,
+    "orders_pending": 656,
+    "orders_distinct_order_id": 12309,
+    "orders_non_numeric_amount": 120,
+    "orders_negative_delivery": 106,
+    "orders_blank_delivery": 2541,
+    "customers_blank_age": 61,
+    "customers_age_outside_10_100": 6,
+    "customers_raw_city_spellings": 24,
+    "customers_raw_gender_spellings_nonblank": 10,
+    "customers_blank_gender": 30
+  },
+  "cleaning": {
+    "age_values_filled_from_city_median": 67,
+    "missing_amounts_filled": 112,
+    "negative_delivery_times_removed": 106,
+    "missing_completed_delivery_filled": 774,
+    "raw_order_rows": 13084,
+    "exact_duplicate_rows_removed": 119,
+    "rows_after_exact_dedup": 12965,
+    "rows_final": 12309,
+    "status_counts": {
+      "completed": 11110,
+      "cancelled": 1199
+    },
+    "completed_revenue": 2998668.8,
+    "city_counts": {
+      "Pune": 227,
+      "Delhi": 210,
+      "Bengaluru": 197,
+      "Chennai": 191,
+      "Hyderabad": 191,
+      "Mumbai": 184
+    },
+    "gender_counts": {
+      "female": 610,
+      "male": 560,
+      "unknown": 30
+    }
+  },
+  "sql": {
+    "Q1": {
+      "rows": 30
+    },
+    "Q2": {
+      "rows": 30,
+      "revenue_total": 2998668.8,
+      "largest_cell": {
+        "city": "Bengaluru",
+        "category": "Electronics",
+        "revenue": 233909.45
+      }
+    },
+    "Q3": {
+      "rows": 11
+    },
+    "Q4": {
+      "rows": 25
+    },
+    "Q5": {
+      "rows": 550,
+      "avg_spend": 2552.06
+    },
+    "Q6": {
+      "rows": 1175,
+      "rank_vs_rownum_diff": 8,
+      "top_by_city": [
+        {
+          "city": "Bengaluru",
+          "customer_id": "C0082",
+          "total_spend": 12856.2
+        },
+        {
+          "city": "Chennai",
+          "customer_id": "C0930",
+          "total_spend": 10151.4
+        },
+        {
+          "city": "Delhi",
+          "customer_id": "C0291",
+          "total_spend": 13742.6
+        },
+        {
+          "city": "Hyderabad",
+          "customer_id": "C0743",
+          "total_spend": 12730.050000000001
+        },
+        {
+          "city": "Mumbai",
+          "customer_id": "C0693",
+          "total_spend": 14766.550000000001
+        },
+        {
+          "city": "Pune",
+          "customer_id": "C0426",
+          "total_spend": 10377.1
+        }
+      ]
+    },
+    "Q7": {
+      "rows": 183,
+      "last_cumulative": 2998668.8
+    }
+  },
+  "city_stats": [
+    {
+      "city": "Bengaluru",
+      "sum": 523643.4,
+      "mean": 276.47,
+      "count": 1894
+    },
+    {
+      "city": "Chennai",
+      "sum": 463629.15,
+      "mean": 272.72,
+      "count": 1700
+    },
+    {
+      "city": "Delhi",
+      "sum": 502829.8,
+      "mean": 243.62,
+      "count": 2064
+    },
+    {
+      "city": "Hyderabad",
+      "sum": 528589.9,
+      "mean": 284.95,
+      "count": 1855
+    },
+    {
+      "city": "Mumbai",
+      "sum": 479058.5,
+      "mean": 297.0,
+      "count": 1613
+    },
+    {
+      "city": "Pune",
+      "sum": 500918.05,
+      "mean": 252.48,
+      "count": 1984
+    }
+  ],
+  "pivot_grand_total": 2998668.8,
+  "eda": {
+    "mean": 269.91,
+    "median": 135.0,
+    "skew": 4.61,
+    "q1": 64.8,
+    "q3": 297.0,
+    "lower_fence": -283.5,
+    "upper_fence": 645.3,
+    "outliers_below": 0,
+    "outliers_above": 897,
+    "largest_abs_corr_pair": [
+      "order_amount",
+      "discount_pct",
+      -0.0951058554520398
+    ]
+  },
+  "correlation": {
+    "order_amount": {
+      "order_amount": 1.0,
+      "discount_pct": -0.095,
+      "quantity": 0.087,
+      "delivery_minutes": -0.003
+    },
+    "discount_pct": {
+      "order_amount": -0.095,
+      "discount_pct": 1.0,
+      "quantity": -0.0,
+      "delivery_minutes": -0.01
+    },
+    "quantity": {
+      "order_amount": 0.087,
+      "discount_pct": -0.0,
+      "quantity": 1.0,
+      "delivery_minutes": -0.013
+    },
+    "delivery_minutes": {
+      "order_amount": -0.003,
+      "discount_pct": -0.01,
+      "quantity": -0.013,
+      "delivery_minutes": 1.0
+    }
+  },
+  "checkpoints": {
+    "clean_customers": true,
+    "six_cities": true,
+    "customer_gender_counts": true,
+    "no_missing_age": "True",
+    "clean_orders": true,
+    "no_pending": true,
+    "order_amount_complete": "True",
+    "completed_delivery_complete": "True",
+    "cancelled_delivery_missing": "True",
+    "completed_revenue": true,
+    "one_row_per_order": true
+  }
+}

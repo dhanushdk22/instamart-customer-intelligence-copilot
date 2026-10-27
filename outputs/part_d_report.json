@@ -1,0 +1,146 @@
+{
+  "chunk_counts": {
+    "delivery_policy.txt": 3,
+    "escalation_policy.txt": 3,
+    "payment_policy.txt": 3,
+    "privacy_policy.txt": 2,
+    "refund_policy.txt": 4
+  },
+  "chunk_total": 15,
+  "refund_policy_late_delivery_top3": [
+    "refund_policy.txt",
+    "refund_policy.txt",
+    "refund_policy.txt"
+  ],
+  "rag_eval": {
+    "answerable_doc_retrieval": "12/12",
+    "answerable_expected_fact": "12/12",
+    "unanswerable_fallback": "2/2"
+  },
+  "zero_overlap_eval": {
+    "answerable_doc_retrieval": "12/12",
+    "answerable_expected_fact": "10/12",
+    "unanswerable_fallback": "2/2",
+    "failed_questions": [
+      "What delivery time makes a completed order eligible for a full refund?",
+      "How soon is money returned when a payment fails but is deducted?"
+    ]
+  },
+  "scenarios": [
+    {
+      "scenario_id": "S1",
+      "status": "REFUND",
+      "refund_inr": 128.25,
+      "expected_outcome": "REFUND",
+      "expected_refund_inr": 128.25,
+      "llm_calls": 5,
+      "tokens_used": 992,
+      "tools": [
+        "get_order",
+        "search_policy",
+        "calculate_refund",
+        "issue_refund"
+      ]
+    },
+    {
+      "scenario_id": "S2",
+      "status": "REFUND",
+      "refund_inr": 135.0,
+      "expected_outcome": "REFUND",
+      "expected_refund_inr": 135.0,
+      "llm_calls": 5,
+      "tokens_used": 992,
+      "tools": [
+        "get_order",
+        "search_policy",
+        "calculate_refund",
+        "issue_refund"
+      ]
+    },
+    {
+      "scenario_id": "S3",
+      "status": "ESCALATE",
+      "refund_inr": 1999.0,
+      "expected_outcome": "ESCALATE",
+      "expected_refund_inr": 1999.0,
+      "llm_calls": 5,
+      "tokens_used": 979,
+      "tools": [
+        "get_order",
+        "search_policy",
+        "calculate_refund",
+        "escalate_to_human"
+      ]
+    },
+    {
+      "scenario_id": "S4",
+      "status": "DENIED",
+      "refund_inr": 0.0,
+      "expected_outcome": "DENIED",
+      "expected_refund_inr": 0.0,
+      "llm_calls": 4,
+      "tokens_used": 681,
+      "tools": [
+        "get_order",
+        "search_policy",
+        "calculate_refund"
+      ]
+    },
+    {
+      "scenario_id": "S5",
+      "status": "DENIED",
+      "refund_inr": 0.0,
+      "expected_outcome": "DENIED",
+      "expected_refund_inr": 0.0,
+      "llm_calls": 3,
+      "tokens_used": 394,
+      "tools": [
+        "get_order",
+        "search_policy"
+      ]
+    },
+    {
+      "scenario_id": "S6",
+      "status": "NOT_FOUND",
+      "refund_inr": 0.0,
+      "expected_outcome": "NOT_FOUND",
+      "expected_refund_inr": 0.0,
+      "llm_calls": 2,
+      "tokens_used": 110,
+      "tools": [
+        "get_order"
+      ]
+    },
+    {
+      "scenario_id": "S7",
+      "status": "FALLBACK_MAX_ITERATIONS",
+      "refund_inr": 0.0,
+      "expected_outcome": "FALLBACK",
+      "expected_refund_inr": 0.0,
+      "llm_calls": 6,
+      "tokens_used": 3114,
+      "tools": [
+        "search_policy",
+        "search_policy",
+        "search_policy",
+        "search_policy",
+        "search_policy",
+        "search_policy"
+      ]
+    }
+  ],
+  "token_demo_status": "FALLBACK_TOKEN_LIMIT",
+  "token_demo_calls": 3,
+  "timeout_demo_status": "FALLBACK_TIMEOUT",
+  "timeout_demo_calls": 0,
+  "crash_resume_status": "REFUND",
+  "crash_resume_refund": 128.25,
+  "crash_resume_tools": [
+    "get_order",
+    "search_policy",
+    "calculate_refund",
+    "issue_refund"
+  ],
+  "crash_resume_llm_calls": 3,
+  "crash_resume_tokens": 992
+}
